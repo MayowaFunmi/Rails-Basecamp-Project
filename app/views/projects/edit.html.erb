@@ -1,0 +1,40 @@
+
+
+<div class="content" style="margin-top: 100px;">
+        <div class="row justify-content-center">
+          
+          <div class="col-md-6">
+            <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title ">Editing project</h4>
+              </div>
+              <div class="card-body">
+              <%= form_with model: @project, local: true do |form| %>
+                    <div>
+                      <%= form.label :name, style: "display: block" %>
+                      <%= form.text_field :name ,class: "form-control"%>
+                    </div>
+                         
+                         <br/>
+                    <div>
+                      <%= form.label :description, style: "display: block" %>
+                      <%= form.text_field :description ,class: "form-control"%>
+                    </div>
+                    <br/>
+                       
+                    <div>
+                      <%= form.submit class: "btn btn-fill btn-primary" %>
+                    </div>
+                </div>
+              </div>
+               <%= link_to "Show this project", @project %> 
+              </div>
+              </div>
+               
+              </div>
+              </div>
+            
+              </div>
+
+        <% end %>

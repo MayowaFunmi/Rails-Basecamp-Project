@@ -1,0 +1,91 @@
+
+<div class="content" style="margin:5% ;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">All users</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body px-0 pb-2">
+                                    <div class="table-responsive p-0">
+                                      <table class="table align-items-center justify-content-center mb-0">
+                                        <thead>
+                                        <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Role</th>
+                                        <th>Add/Remove Admin</th>
+                                        <th>Delete User</th>
+
+                                        
+                                          
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <% @users.each do |user|%>
+                                          <tr>
+
+                                            <td>
+                                            
+                                                  <h6 class="mb-0 text-sm"> <%= user.name %></h6>
+                                               
+                                            </td>
+
+                                            <td>
+                                    
+                                                    <p class="mb-0 text-sm"><%= user.email %></p>
+                                               
+                                              </td>
+
+                                              <td>
+                                               
+                                          
+                                                <p class="mb-0 text-sm text-center"><% if user.admin %>Admin<% else %>User<% end %>  </p>
+                                               
+                                                
+                                                
+                                              </td>
+                                             
+                                              <td>
+                                                  
+                                                   <% if user.name != current_user.name%>
+                                                 
+                                                  <% if user.admin == true %>
+                                                        <%= link_to 'person_remove ', "/remove_from_admin/#{user.id}" , class: "btn btn-danger material-symbols-outlined "%>
+                                                  <% else %>
+                                                  <%= link_to 'person_add', "/add_admin/#{user.id}", class: "btn btn-primary material-symbols-outlined" %>
+                                              <% end %>
+                                                <%end%>
+                                              </td>
+                                            
+                                            <td>
+                                                <% if user.name != current_user.name%>
+                                                <%= link_to 'Delete', "/destroy_user/#{user.id}", method: :delete, data: {confirm: "Are you sure to delete this user? "}, class: "btn btn-danger material-symbols-outlined " %> 
+                                                  <%end%>
+                                               
+                                            </td>
+
+                                                <td>
+                                                
+                                            </td>
+                                            
+                                          </tr>
+                                          <% end %>
+                                        </tbody>
+                                      </table>
+                                    </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>

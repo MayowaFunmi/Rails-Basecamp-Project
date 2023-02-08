@@ -1,0 +1,76 @@
+this is for docode, to be submitted
+
+rails new my_basecamp_1
+add to Gemfile = gem 'devise', '~> 4.8', '>= 4.8.1'
+cd my_basecamp1
+run = bundle install
+run = rails generate devise:install
+follow the following instructions...
+
+============================================================================================
+Depending on your application's configuration some manual setup may be required:
+
+  1. Ensure you have defined default url options in your environments files. Here
+     is an example of default_url_options appropriate for a development environment
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+     In production, :host should be set to the actual host of your application.
+
+     * Required for all applications. *
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root to: "home#index"
+     
+     * Not required for API-only Applications *
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+     * Not required for API-only Applications *
+
+  4. You can copy Devise views (for customization) to your app by running:
+
+       rails g devise:views
+       
+     * Not required *
+
+===============================================================================
+
+run = rails generate devise User role:integer
+    add to t.integer = , default: 0
+run = rails.migrate
+add custom field to database:
+  run = rails g migration addFieldsToUsers name:string
+run = rails db:migrate
+run = rails g controller home index
+
+===========projects =============
+rails g scaffold project name:string description:string
+rails db:migrate
+
+add users to a project
+  run = rails g migration add_users_to_project user:references
+  rails db:migrate
+
+add user admin
+  rails g migration add_admin_to_users admin:boolean
+  add to migration file = , default: false
+  run = rails db:migrate
+
+============================================================================
+#### rails generate controller sessions
+
+rails generate devise:controllers users
+
+to make the last registered user an admin:
+  open the rail console: rails c
+  run = User.last.update(admin: true)
+
+<%= render "form", project: @project %> = from app/views/projects/edit.html.erb

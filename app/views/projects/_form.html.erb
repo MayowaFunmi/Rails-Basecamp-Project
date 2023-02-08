@@ -1,0 +1,46 @@
+<%= form_with(model: project) do |form| %>
+  <% if project.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <div class="content" style="margin-top: 100px;">
+        <div class="row justify-content-center">
+          
+          <div class="col-md-6">
+            <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title ">Add Project</h4>
+              </div>
+              <div class="card-body">
+                    <div>
+                      <%= form.label :name, style: "display: block" %>
+                      <%= form.text_field :name ,class: "form-control"%>
+                    </div>
+                         
+                         <br/>
+                    <div>
+                      <%= form.label :description, style: "display: block" %>
+                      <%= form.text_field :description ,class: "form-control"%>
+                    </div>
+                    <br/>
+                       
+                    <div>
+                      <%= form.submit class: "btn btn-fill btn-primary" %>
+                    </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+<% end %>

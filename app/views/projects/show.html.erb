@@ -1,0 +1,27 @@
+<%= render @project%>
+<br>
+<div class="row col-md-4">
+
+
+<div class ="row col-md-4">
+<div class ="col-md-4">
+ <%= link_to "Edit", edit_project_path(@project), class:"btn btn-primary material-symbols-outlined"%> 
+</div>
+<div class ="col-md-4 text-primary">
+</div>
+
+</div>
+
+<div class ="row col-md-4">
+<div class ="col-md-4">
+  <%= button_to "Delete", @project, method: :delete, class: "btn btn-danger material-symbols-outlined"%> 
+</div>
+<div class ="col-md-4 text-danger">
+</div>
+</div>
+<div class ="col-md-4">
+</div>
+    <%# <p class="text-primary"style="text-decoration: none">
+    <%= link_to "Back to projects", projects_path  %>
+     
+</div>

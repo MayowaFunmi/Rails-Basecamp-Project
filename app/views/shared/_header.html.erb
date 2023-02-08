@@ -1,0 +1,45 @@
+<header>
+  <div>
+      <% if user_signed_in? %>
+      <div class="">
+          <nav class="navbar navbar-expand-lg bg-light">
+              <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <%= link_to 'Home', projects_path, class:"navbar-brand"%> 
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <%= link_to 'Profile', home_profile_page_path, class: "nav-link"%> 
+                    </li>
+                
+                    <li class="nav-item">
+                    <%= link_to 'Add Project', new_project_path, class:"nav-link" %> 
+                    </li>
+                    <% if current_user.admin == true %>
+                      <li class="nav-item">
+                      <%= link_to 'All Users', home_show_path, class:"nav-link" %>
+                      <!--
+                        <%= link_to 'Admin Page', '/user_admin', class:"nav-link" %>
+                      -->
+                      </li>
+                    <% end %>
+                  </ul>
+                  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete },class: "nav-link" %>
+                </div>
+              </div>
+          </nav>
+      </div>
+        <% if current_user.admin == true %>
+          Logged in as <strong class="text-primary"><%= current_user.name%>(Admin)</strong>
+        <% else %>
+          Logged in as <strong class="text-primary"><%= current_user.name %>(User)</strong>
+        <% end %> 
+      
+      <% else %>
+      <!-- <p>not signed in</p> -->
+      <% end %> 
+  </div> 
+</header>
